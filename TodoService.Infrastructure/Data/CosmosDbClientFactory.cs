@@ -38,8 +38,8 @@ namespace TodoService.Infrastructure.Data
 
             foreach (var collectionName in _collectionNames)
             {
-                await _documentClient.ReadDocumentCollectionAsync(
-                    UriFactory.CreateDocumentCollectionUri(_databaseName, collectionName));
+                var u = UriFactory.CreateDocumentCollectionUri(_databaseName, collectionName);
+                await _documentClient.ReadDocumentCollectionAsync(u);
             }
         }
     }

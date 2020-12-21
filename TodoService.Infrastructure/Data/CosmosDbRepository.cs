@@ -27,6 +27,10 @@ namespace TodoService.Infrastructure.Data
             try
             {
                 var cosmosDbClient = _cosmosDbClientFactory.GetClient(CollectionName);
+
+                var jay = ResolvePartitionKey(id);
+                //var jayDoc = await cosmosDbClient.ReadDocumentAsync(id);
+
                 var document = await cosmosDbClient.ReadDocumentAsync(id, new RequestOptions
                 {
                     PartitionKey = ResolvePartitionKey(id)
